@@ -1,0 +1,10 @@
+.footer {
+    display: flex;
+    font-size: 0.7em;
+    color: #5e5e5e;
+    gap: 14em;
+    padding-bottom: 10em;
+  }
+  .screen-1 .footer span {
+    cursor: pointer;
+  }
