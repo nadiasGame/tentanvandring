@@ -31,7 +31,8 @@ const Navbar = () => {
       <li><a href="/register">Register</a></li>
       <li><a href="/login">Login</a></li>
         <li><a href="/admin">Admin</a></li>
-        <li><a href="contact">Contact</a></li>
+        <li><a href="/welcome">Welcome</a></li>
+       
         <a href="#" id="menu-icon"></a>
 
       </ul>

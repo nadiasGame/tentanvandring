@@ -32,16 +32,7 @@ app.use(cors({ credentials: true, origin: whitelist }));
 // Uncomment to init defaultRoles
 /*  db.initRoles(); */
 
-app.get('/api/users',adminAuthorization ,async (req, res) => {
-  try {
-    const users = await db.getUsers();
-    console.log(users);
-    return res.status(200).json(users);
-  } catch (err) {
-    console.log('Error in getting users: ', err);
-    return res.sendStatus(400);
-  }
-});
+
 
 app.get('/api/user/:id', async (req, res) => {
   try {
