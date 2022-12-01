@@ -20,7 +20,7 @@ const handleSubmit = async(e:React.FormEvent<HTMLFormElement>)=>{
     "email": email.value,
     "password": password.value
 })
-console.log(res.data);
+
 
 
 

@@ -44,6 +44,19 @@ db.getUsers = () => {
   });
 };
 
+db.getAdminData = () => {
+  return new Promise((resolve, reject) => {
+    const sql = 'SELECT userId, email, username FROM Users';
+    const query = mysql.format(sql);
+    pool.query(query, (err, result) => {
+        if (err) {
+            return reject(err);
+        }
+        return resolve(result);
+    });
+});
+};
+
 db.getUserByEmail = (email) => {
   return new Promise((resolve, reject) => {
     const sql = 'SELECT * FROM Users WHERE email = ?';

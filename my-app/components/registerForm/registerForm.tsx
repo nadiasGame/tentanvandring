@@ -20,7 +20,7 @@ try {
         "email": email.value,
         "password": password.value
     }, )
-    console.log(res.data);
+    
 } catch (error) {}
     
   

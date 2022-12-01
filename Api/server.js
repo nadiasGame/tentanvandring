@@ -30,7 +30,7 @@ app.use(cors({ credentials: true, origin: whitelist }));
 
 
 // Uncomment to init defaultRoles
-/*  db.initRoles(); */
+/*  db.initRoles();  */
 
 
 
@@ -168,9 +168,11 @@ app.post('/api/register', async (req, res) => {
 });
 
 
-app.get('/api/users', adminAuthorization, async (req, res) => {
+/* app.get('/api/users', adminAuthorization, async (req, res) => {
   try {
     const result = await db.getUsers();
+    
+
     let duplicateList = result.filter((val) => val.rolename === 'NORMAL_USER');
     for (const index in result) {
       const user = result[index];
@@ -193,16 +195,32 @@ app.get('/api/users', adminAuthorization, async (req, res) => {
   } catch (err) {
     res.sendStatus(400);
   }
+}); */
+
+app.get('/api/users', /* adminAuthorization, */  async (req, res) => {
+  try {
+      const users = await db.getUsers();
+
+      return res.status(200).json(users);
+  } catch (err) {
+      console.log('Error getting users');
+      return res.sendStatus(400);
+  }
 });
+
 app.get('/api/user', authorization, async (req, res) => {
+  
   const userId = req.query.id;
   const user = await db.getUserById(userId);
   const roles = await db.getRolesForUser(userId);
+  
   return res.status(200).json({
+    
     userId: user.userId,
     email: user.email,
     username: user.username,
-    roles: roles.map((val) => val.rolename),
+    roles: roles.map((val) => val.rolename.users),
+    
   });
 });
 
