@@ -14,25 +14,22 @@ const Admin = () => {
   
   
 useEffect(()=>{
-  const getAdminData = async ()=>{
+  const fetchUsers = async ()=>{
     const res = await client.get('users');
+    try{
+
+    
       
-    if (res.status == 400) {
-
-      console.log('Kunde inte hämta användare');
-
-    } else if (res.status == 200) {
+    if (res.status == 200) {
      
       const users = await res.data;
-      console.log('Nåt händer här!',users);
-      setUsers(users);
-    } else if (res.status == 403) {
-      console.log('Något gick fel här');
-    }
-  };
+      
+      setUsers(users);  }
+    } catch (error) {}
+};
+fetchUsers();
+}, []);
 
-  getAdminData ()
-},[])
 
     return <div>
     <MyImage/>

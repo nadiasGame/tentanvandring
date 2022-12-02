@@ -199,7 +199,7 @@ app.post('/api/register', async (req, res) => {
 
 app.get('/api/users', /* adminAuthorization, */  async (req, res) => {
   try {
-      const users = await db.getUsers();
+      const users = await db.getAdminData();
 
       return res.status(200).json(users);
   } catch (err) {
